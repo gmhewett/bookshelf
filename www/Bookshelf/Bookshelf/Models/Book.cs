@@ -5,6 +5,8 @@
 
     public class Book : BookshelfModel
     {
+        public int LibraryId { get; set; }
+
         public string Title { get; set; }
 
         public IEnumerable<string> Authors { get; set; }
@@ -34,5 +36,7 @@
         public string Language { get; set; }
 
         public string InfoLink { get; set; }
+
+        public virtual Library Library { get; set; }
     }
 }
