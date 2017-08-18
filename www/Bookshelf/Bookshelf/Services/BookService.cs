@@ -3,9 +3,9 @@
     using System;
     using Bookshelf.Models;
 
-    public class BooksService : ServiceBase<Book>, IBooksService
+    public class BookService : ServiceBase<Book>, IBookService
     {
-        public BooksService(BookshelfDbContext dbContext) : base(dbContext)
+        public BookService(BookshelfDbContext dbContext) : base(dbContext)
         {
             if (dbContext == null)
             {

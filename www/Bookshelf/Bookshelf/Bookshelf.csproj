@@ -248,7 +248,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\LibrariesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -264,21 +264,30 @@
     <Compile Include="Migrations\201708170508214_Libraries.Designer.cs">
       <DependentUpon>201708170508214_Libraries.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708180408270_teachers-students.cs" />
+    <Compile Include="Migrations\201708180408270_teachers-students.Designer.cs">
+      <DependentUpon>201708180408270_teachers-students.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookshelfModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\BookshelfUser.cs" />
+    <Compile Include="Models\BookshelfDbContext.cs" />
     <Compile Include="Models\ImageLinks.cs" />
     <Compile Include="Models\Library.cs" />
     <Compile Include="Models\RoleNames.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
-    <Compile Include="Services\BooksService.cs" />
-    <Compile Include="Services\IBooksService.cs" />
+    <Compile Include="Services\BookService.cs" />
+    <Compile Include="Services\IBookService.cs" />
+    <Compile Include="Services\ILibraryService.cs" />
     <Compile Include="Services\IServiceBase.cs" />
+    <Compile Include="Services\LibraryService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -374,6 +383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708170508214_Libraries.resx">
       <DependentUpon>201708170508214_Libraries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708180408270_teachers-students.resx">
+      <DependentUpon>201708180408270_teachers-students.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

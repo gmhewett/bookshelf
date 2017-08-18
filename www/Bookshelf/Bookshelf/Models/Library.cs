@@ -6,8 +6,10 @@
     {
         public string OwnerId { get; set; }
 
+        public virtual ICollection<Student> Students { get; set; }
+
         public virtual ICollection<Book> Books { get; set; }
 
-        public virtual BookshelfUser Owner { get; set; }
+        public virtual Teacher Owner { get; set; }
     }
 }

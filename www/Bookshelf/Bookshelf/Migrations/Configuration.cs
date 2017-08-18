@@ -63,7 +63,7 @@ namespace Bookshelf.Migrations
             {
                 var store = new UserStore<BookshelfUser>(context);
                 var manager = new UserManager<BookshelfUser>(store);
-                var user = new BookshelfUser
+                var user = new Teacher
                 {
                     Id = "2",
                     UserName = "jenni.l.hewett@gmail.com",

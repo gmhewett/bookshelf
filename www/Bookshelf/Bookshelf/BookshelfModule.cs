@@ -3,6 +3,7 @@
     using System;
     using Autofac;
     using Bookshelf.Models;
+    using Bookshelf.Services;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
@@ -25,6 +26,9 @@
             {
                 DataProtectionProvider = c.Resolve<IDataProtectionProvider>()
             });
+
+            builder.RegisterType<BookService>().As<IBookService>();
+            builder.RegisterType<LibraryService>().As<ILibraryService>();
         }
     }
 }

@@ -11,24 +11,24 @@
 
     public class BooksController : ApiController
     {
-        private readonly IBooksService booksService;
+        private readonly IBookService bookService;
 
-        public BooksController(IBooksService booksService)
+        public BooksController(IBookService bookService)
         {
-            this.booksService = booksService ?? throw new ArgumentNullException(nameof(booksService));
+            this.bookService = bookService ?? throw new ArgumentNullException(nameof(bookService));
         }
 
         // GET: api/Books
         public async Task<IEnumerable<Book>> GetBooks()
         {
-            return await this.booksService.GetAsync();
+            return await this.bookService.GetAsync();
         }
 
         // GET: api/Books/5
         [ResponseType(typeof(Book))]
         public async Task<IHttpActionResult> GetBook(int id)
         {
-            Book book = await this.booksService.GetByIdAsync(id);
+            Book book = await this.bookService.GetByIdAsync(id);
             if (book == null)
             {
                 return NotFound();
@@ -53,7 +53,7 @@
 
             try
             {
-                await this.booksService.UpdateAsync(book);
+                await this.bookService.UpdateAsync(book);
             }
             catch (KeyNotFoundException)
             {
@@ -72,7 +72,7 @@
                 return BadRequest(ModelState);
             }
 
-            await this.booksService.CreateAsync(book);
+            await this.bookService.CreateAsync(book);
 
             return CreatedAtRoute("DefaultApi", new { id = book.Id }, book);
         }
@@ -84,7 +84,7 @@
             Book book;
             try
             {
-                book = await this.booksService.DeleteAsync(id);
+                book = await this.bookService.DeleteAsync(id);
             }
             catch (KeyNotFoundException)
             {
@@ -98,7 +98,7 @@
         {
             if (disposing)
             {
-                this.booksService.Dispose();
+                this.bookService.Dispose();
             }
 
             base.Dispose(disposing);
