@@ -13,6 +13,8 @@
         public DbSet<Book> Books { get; set; }
 
         public DbSet<Library> Libraries { get; set; }
+
+        public DbSet<Rental> Rentals { get; set; }
         
         public static BookshelfDbContext Create()
         {
@@ -35,7 +37,18 @@
                 .WithMany(l => l.Books)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Rental>()
+                .HasRequired(r => r.Student)
+                .WithMany(s => s.Rentals)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Rental>()
+                .HasRequired(r => r.Book)
+                .WithMany(b => b.Rentals)
+                .WillCascadeOnDelete(false);
+
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }

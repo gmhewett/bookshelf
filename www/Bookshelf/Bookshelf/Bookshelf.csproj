@@ -249,6 +249,7 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LibrariesController.cs" />
+    <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -268,6 +269,14 @@
     <Compile Include="Migrations\201708180408270_teachers-students.Designer.cs">
       <DependentUpon>201708180408270_teachers-students.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708190337048_rentals.cs" />
+    <Compile Include="Migrations\201708190337048_rentals.Designer.cs">
+      <DependentUpon>201708190337048_rentals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708190352556_remove-library-rentals.cs" />
+    <Compile Include="Migrations\201708190352556_remove-library-rentals.Designer.cs">
+      <DependentUpon>201708190352556_remove-library-rentals.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -277,6 +286,7 @@
     <Compile Include="Models\BookshelfDbContext.cs" />
     <Compile Include="Models\ImageLinks.cs" />
     <Compile Include="Models\Library.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\RoleNames.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Teacher.cs" />
@@ -286,8 +296,10 @@
     <Compile Include="Services\BookService.cs" />
     <Compile Include="Services\IBookService.cs" />
     <Compile Include="Services\ILibraryService.cs" />
+    <Compile Include="Services\IRentalService.cs" />
     <Compile Include="Services\IServiceBase.cs" />
     <Compile Include="Services\LibraryService.cs" />
+    <Compile Include="Services\RentalService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -386,6 +398,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708180408270_teachers-students.resx">
       <DependentUpon>201708180408270_teachers-students.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708190337048_rentals.resx">
+      <DependentUpon>201708190337048_rentals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708190352556_remove-library-rentals.resx">
+      <DependentUpon>201708190352556_remove-library-rentals.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

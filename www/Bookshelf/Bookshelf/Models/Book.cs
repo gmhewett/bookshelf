@@ -7,6 +7,12 @@
     {
         public int LibraryId { get; set; }
 
+        public int TotalCopies { get; set; }
+
+        public int AvailableCopies { get; set; }
+
+        public ICollection<Rental> Rentals { get; set; }
+
         public string Title { get; set; }
 
         public IEnumerable<string> Authors { get; set; }

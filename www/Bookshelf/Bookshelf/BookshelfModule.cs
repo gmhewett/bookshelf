@@ -29,6 +29,7 @@
 
             builder.RegisterType<BookService>().As<IBookService>();
             builder.RegisterType<LibraryService>().As<ILibraryService>();
+            builder.RegisterType<RentalService>().As<IRentalService>();
         }
     }
 }

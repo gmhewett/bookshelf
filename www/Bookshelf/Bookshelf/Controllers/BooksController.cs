@@ -94,6 +94,12 @@
             return Ok(book);
         }
 
+        [ResponseType(typeof(Book))]
+        public async Task<IHttpActionResult> CheckOutBook(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
