@@ -57,7 +57,7 @@
             }
         }
 
-        public async Task CreateAsync(TEntity entity)
+        public virtual async Task CreateAsync(TEntity entity)
         {
             this.dbSet.Add(entity);
             await this.dbContext.SaveChangesAsync();
