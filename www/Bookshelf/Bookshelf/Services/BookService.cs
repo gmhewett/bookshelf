@@ -2,7 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
-    using Bookshelf.Clients;
+    using Bookshelf.Clients.GoogleBooksApi;
     using Bookshelf.Models;
 
     public class BookService : ServiceBase<Book>, IBookService
@@ -19,19 +19,11 @@
             this.booksApiClient = booksApiClient ?? throw new ArgumentNullException(nameof(booksApiClient));
         }
 
-        public Task<Book> LookUp(string isbn)
+        public async Task<Book> LookUpAsync(string isbn)
         {
-            throw new NotImplementedException();
-        }
+            var googleVolume = await this.booksApiClient.LookUpByIsbnAsync(isbn);
 
-        public Task<Book> CheckOutBook(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Book> ReturnBook(int id)
-        {
-            throw new NotImplementedException();
+            return googleVolume?.VolumeInfo == null ? null : new Book(googleVolume);
         }
     }
 }

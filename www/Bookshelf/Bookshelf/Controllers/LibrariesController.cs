@@ -9,6 +9,7 @@
     using Bookshelf.Models;
     using Bookshelf.Services;
 
+    [Authorize]
     public class LibrariesController : ApiController
     {
         private readonly ILibraryService libraryService;

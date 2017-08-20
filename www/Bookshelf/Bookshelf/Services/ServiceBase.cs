@@ -17,7 +17,7 @@
         public ServiceBase(BookshelfDbContext dbContext)
         {
             this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-            this.dbSet = dbSet ?? throw new ArgumentNullException(nameof(dbContext));
+            this.dbSet = dbContext.Set<TEntity>() ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public async Task<IEnumerable<TEntity>> GetAsync(

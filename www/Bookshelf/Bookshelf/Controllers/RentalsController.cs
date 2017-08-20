@@ -8,7 +8,8 @@
     using System.Web.Http.Description;
     using Bookshelf.Models;
     using Bookshelf.Services;
-
+    
+    [Authorize]
     public class RentalsController : ApiController
     {
         private readonly IRentalService rentalService;
@@ -92,6 +93,31 @@
             }
 
             return Ok(rental);
+        }
+
+        // PUT: api/Rentals/Return/5
+        [HttpPut]
+        [ResponseType(typeof(Rental))]
+        public async Task<IHttpActionResult> ReturnRental(int id)
+        {
+            Rental rental = await this.rentalService.GetByIdAsync(id);
+            if (rental == null)
+            {
+                return NotFound();
+            }
+
+            rental.IsReturned = true;
+
+            try
+            {
+                await this.rentalService.UpdateAsync(rental);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         protected override void Dispose(bool disposing)

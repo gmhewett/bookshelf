@@ -12,6 +12,13 @@
             HttpConfiguration.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             HttpConfiguration.MapHttpAttributeRoutes();
+
+            HttpConfiguration.Routes.MapHttpRoute(
+                name: "ApiActions",
+                routeTemplate: "api/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
             HttpConfiguration.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

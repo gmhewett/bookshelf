@@ -9,6 +9,7 @@
     using Bookshelf.Models;
     using Bookshelf.Services;
 
+    [Authorize]
     public class BooksController : ApiController
     {
         private readonly IBookService bookService;
@@ -28,7 +29,7 @@
         [ResponseType(typeof(Book))]
         public async Task<IHttpActionResult> GetBook(int id)
         {
-            Book book = await this.bookService.GetByIdAsync(id);
+            var book = await this.bookService.GetByIdAsync(id);
             if (book == null)
             {
                 return NotFound();
@@ -94,10 +95,18 @@
             return Ok(book);
         }
 
+        // GET: api/Books/LookUp
+        [HttpGet]
         [ResponseType(typeof(Book))]
-        public async Task<IHttpActionResult> CheckOutBook(int id)
+        public async Task<IHttpActionResult> LookUp(string isbn)
         {
-            throw new NotImplementedException();
+            var book = await this.bookService.LookUpAsync(isbn);
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(book);
         }
 
         protected override void Dispose(bool disposing)

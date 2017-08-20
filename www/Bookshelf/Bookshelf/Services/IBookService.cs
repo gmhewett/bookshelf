@@ -5,10 +5,6 @@
 
     public interface IBookService : IServiceBase<Book>
     {
-        Task<Book> LookUp(string isbn);
-
-        Task<Book> CheckOutBook(int id);
-
-        Task<Book> ReturnBook(int id);
+        Task<Book> LookUpAsync(string isbn);
     }
 }

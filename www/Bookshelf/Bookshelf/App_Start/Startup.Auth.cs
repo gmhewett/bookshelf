@@ -2,8 +2,10 @@
 {
     using System;
     using Autofac;
+    using Bookshelf.Config;
     using Bookshelf.Providers;
     using Microsoft.AspNet.Identity;
+    using Microsoft.Azure;
     using Microsoft.Owin;
     using Microsoft.Owin.Security.Cookies;
     using Microsoft.Owin.Security.OAuth;
@@ -24,7 +26,9 @@
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Configure the application for OAuth based flow
+            IBookshelfConfig config = container.Resolve<IBookshelfConfig>();
             PublicClientId = "self";
+
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/Token"),
@@ -32,8 +36,8 @@
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
                 // In production mode set AllowInsecureHttp = false
-                AllowInsecureHttp = true
-            };
+                AllowInsecureHttp = config.Get<bool>("WebApi.AllowInsecureHttp")
+        };
 
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);

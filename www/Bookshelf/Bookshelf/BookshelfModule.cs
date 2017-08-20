@@ -2,6 +2,9 @@
 {
     using System;
     using Autofac;
+    using Bookshelf.Clients.GoogleBooksApi;
+    using Bookshelf.Config;
+    using Bookshelf.Loggers;
     using Bookshelf.Models;
     using Bookshelf.Services;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -27,9 +30,14 @@
                 DataProtectionProvider = c.Resolve<IDataProtectionProvider>()
             });
 
+            builder.RegisterType<BookshelfConfig>().As<IBookshelfConfig>();
+            builder.RegisterType<BookshelfLogger>().As<IBookshelfLogger>();
+
             builder.RegisterType<BookService>().As<IBookService>();
             builder.RegisterType<LibraryService>().As<ILibraryService>();
             builder.RegisterType<RentalService>().As<IRentalService>();
+
+            builder.RegisterType<GoogleBooksApiClient>().As<IGoogleBooksApiClient>().InstancePerLifetimeScope();
         }
     }
 }
